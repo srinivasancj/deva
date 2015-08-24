@@ -13,6 +13,7 @@ import deva.tools.json.JSONTools;
 public class LearningAgent {
 
 	DialoguePolicy policy;
+	String policyFileName;
 	Double alpha, discount, epsilon;
 	String currentDS, lastDS;
 	String currentActionId, lastActionId;
@@ -23,8 +24,10 @@ public class LearningAgent {
 	public LearningAgent(Domains d, Strategies actionStrategies) {
 		policy = null;
 		
+		policyFileName = "policy.txt";
+		
 		policy = new DialoguePolicy(d.getLearnerState(), actionStrategies);
-		policy.storePolicy();
+		policy.storePolicy(policyFileName);
 	
 		alpha = 0.3;
 		discount = 0.9;
@@ -133,7 +136,7 @@ public class LearningAgent {
 
 	public void savePolicy() {
 		if (policy != null){
-			policy.storePolicy();
+			policy.storePolicy(policyFileName);
 		}
 	}
 

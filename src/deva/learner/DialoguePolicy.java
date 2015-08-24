@@ -89,9 +89,9 @@ public class DialoguePolicy{
 
 	
 	
-	public void storePolicy(){
+	public void storePolicy(String f){
 		try{
-			FileWriter fstream = new FileWriter("policy.txt");
+			FileWriter fstream = new FileWriter(f);
 			BufferedWriter out = new BufferedWriter(fstream);
 			for (int i=0; i<policy.length();i++){
 				out.write(policy.get(i).toString() + "\n");
